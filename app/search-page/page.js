@@ -67,7 +67,7 @@ export default function SearchPage() {
   return (
     <main className="h-screen bg-neutral-50 text-white">
         <Ribbon />
-        <div className="flex mt-5 justify-center">
+        <div className="flex flex-col mt-5 items-center space-y-5">
             <div className="flex flex-col bg-zinc-400 rounded-lg w-70vw h-48 p-8 space-y-5 shadow-lg">
                 <p className="justify-self-center self-center text-black  text-xl">Search your study topic!</p>
                 <div className="flex justify-center mt-10 space-x-2">
@@ -85,9 +85,7 @@ export default function SearchPage() {
                     {isLoading ? (
                     <p className="text-black">Loading...</p>
                     ) : (
-                    <div>
-                      <ExportNotion data={data}/>
-                    </div>
+                      <></>
                     )}
                 </div>  
             </div>     

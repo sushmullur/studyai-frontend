@@ -7,7 +7,7 @@ export async function GET(req) {
 
   try {
     await client.connect();
-    const results = await client.query("SELECT * FROM your_table_name");
+    const results = await client.query("SELECT * FROM your_table_name ORDER BY time DESC");
     return new Response(JSON.stringify(results.rows), { status: 200});
   } catch (err) {
     console.error("Error executing query:", err);
