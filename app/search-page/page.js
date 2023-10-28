@@ -16,6 +16,7 @@ export default function SearchPage() {
     )
   }
   const [data, setData] = useState();
+  const [summary, setSummary] = useState("");
   const handleSearch = async (e) => {
     console.log(search)
     setIsLoading(true)
@@ -64,7 +65,9 @@ export default function SearchPage() {
                     {isLoading ? (
                     <p className="text-black">Loading...</p>
                     ) : (
-                    <ExportNotion data={data}/>
+                    <div>
+                      <ExportNotion data={data}/>
+                    </div>
                     )}
                 </div>  
             </div>     
