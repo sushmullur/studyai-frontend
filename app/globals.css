@@ -25,3 +25,8 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+.text-stroke {
+  -webkit-text-stroke: 2px black; /* Add the stroke effect */
+  text-stroke: 2px black; /* Add the stroke effect */
+}
