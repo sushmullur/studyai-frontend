@@ -15,6 +15,23 @@ export default function SearchPage() {
       </>
     )
   }
+  async function fetchDataFromApi() {
+    try {
+      const response = await fetch("/api/db"); // Replace with the actual URL of your API route
+      if (response.ok) {
+        const data = await response.json();
+        console.log("Data from the API:", data);
+      } else {
+        console.error("Error:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Request failed:", error);
+    }
+  }
+  
+  // Call the function to make the GET request
+  fetchDataFromApi();
+  
   const [data, setData] = useState();
   const [summary, setSummary] = useState("");
   const handleSearch = async (e) => {
