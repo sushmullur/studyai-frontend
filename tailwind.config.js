@@ -24,6 +24,10 @@ module.exports = {
       },
       colors: {
         'gray-750': '#283242',
+        'beige': '#fdf5c9',
+        'cream': '#fdf5c9',
+        'light-brown': '#be9b7b',
+        'brown': '#6b3e26'
       }
     },
   },
