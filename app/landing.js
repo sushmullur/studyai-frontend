@@ -21,7 +21,7 @@ export default function Landing() {
                     <p class="text-white font-serif text-xl">Waste less time cramming lectures and tutorials before your exams and let study.yt summarize the content for you. Our AI will compile content from leading educators on Youtube and give you the information you need. Simply enter the topic and watch the magic happen!</p>
                 </div>
                 <div class="grow-0">
-                    <button class="text-white text-3xl font-bold font-serif bg-gray-700 rounded-full w-25vw h-20" onClick={handleRouting}>Get Started</button>
+                    <button class="text-white text-3xl font-bold font-serif bg-gray-700 rounded-full w-25vw h-20 hover:bg-slate-600" onClick={handleRouting}>Get Started</button>
                 </div>
             </div>
         </main>
