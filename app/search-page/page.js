@@ -3,10 +3,14 @@ import React, { useEffect, useState } from "react";
 import { useUser } from '@auth0/nextjs-auth0/client';
 import Ribbon from "@/components/ribbon";
 import ExportNotion from "@/components/exportNotion";
+import SQLTable from "@/components/table";
 
 export default function SearchPage() {
   const [search, setSearch] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [data, setData] = useState();
+  const [dbdata, setDbdata] = useState();
+
   const { user } = useUser();
   if (!user) { 
     return (
@@ -15,25 +19,24 @@ export default function SearchPage() {
       </>
     )
   }
-  async function fetchDataFromApi() {
-    try {
-      const response = await fetch("/api/db"); // Replace with the actual URL of your API route
-      if (response.ok) {
-        const data = await response.json();
-        console.log("Data from the API:", data);
-      } else {
-        console.error("Error:", response.statusText);
+  useEffect(() => {
+    // Fetch data and update dbdata
+    async function fetchDataFromApi() {
+      try {
+        const response = await fetch('/api/db');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const sqldata = await response.json();
+        setDbdata(sqldata);
+        console.log('dbdata:', dbdata); // This will log the updated dbdata
+      } catch (error) {
+        console.error('Fetch error:', error);
       }
-    } catch (error) {
-      console.error("Request failed:", error);
     }
-  }
+    fetchDataFromApi();
+  }, [data]);
   
-  // Call the function to make the GET request
-  fetchDataFromApi();
-  
-  const [data, setData] = useState();
-  const [summary, setSummary] = useState("");
   const handleSearch = async (e) => {
     console.log(search)
     setIsLoading(true)
@@ -88,6 +91,7 @@ export default function SearchPage() {
                     )}
                 </div>  
             </div>     
+            <SQLTable data={dbdata} />
         </div>   
     </main>
   )

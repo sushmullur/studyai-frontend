@@ -8,7 +8,7 @@ export async function GET(req) {
   try {
     await client.connect();
     const results = await client.query("SELECT * FROM your_table_name");
-    return new Response(JSON.stringify(results.rows));
+    return new Response(JSON.stringify(results.rows), { status: 200});
   } catch (err) {
     console.error("Error executing query:", err);
     return new Response(err.toString(), { status: 500 });
