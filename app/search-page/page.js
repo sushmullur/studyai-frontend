@@ -53,7 +53,16 @@ export default function SearchPage() {
 
     fetch(`https://xrhdplg9s0.execute-api.us-west-2.amazonaws.com/Prod/search?q=${search}`, {
       method: 'POST'
-    }).then(response => response.json())
+    }).then(async response => {
+      const responseText = await response.text();
+      console.log("API Response:", responseText);
+      try {
+        const jsonResponse = JSON.parse(responseText);
+        return jsonResponse;
+      } catch (error) {
+        console.error("JSON Parsing Error:", error);
+      }
+    })
       .then((uri) => {
         const userData = {
           user_id: user.email,
@@ -71,7 +80,6 @@ export default function SearchPage() {
         return uri;
       })
       .then((out) => {
-        console.log(out)
         setIsLoading(false)
         setData(out)
       })
@@ -80,8 +88,8 @@ export default function SearchPage() {
   return (
     <main className="h-full bg-neutral-50 text-white">
       <Ribbon />
-      <div className="flex flex-col mt-5 items-center space-y-5">
-        <div className="flex flex-col bg-zinc-400 rounded-lg w-70vw h-48 p-8 space-y-5 shadow-lg">
+      <div className="flex flex-col h-screen mt-5 items-center space-y-5">
+        <div className="flex flex-col bg-gradient-to-r from-gray-200 to-gray-200 via-gray-300 rounded-lg w-70vw h-48 p-8 space-y-5 shadow-lg">
           <p className="justify-self-center self-center text-black  text-xl">Search your study topic, {user.name}!</p>
           <div className="flex justify-center mt-10 space-x-2">
             <input
@@ -104,6 +112,9 @@ export default function SearchPage() {
         </div>
         <SQLTable data={dbdata} />
       </div>
+      <footer className="text-center text-s text-black">
+        &copy; Learn Stream AI. All rights reserved.
+      </footer>
     </main>
   )
 }

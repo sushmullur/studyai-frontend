@@ -47,10 +47,26 @@ export async function POST(req) {
     await client.connect();
     const { body } = req;
     const data = await getJSONFromStream(body);
-    console.log(data);
 
-    const { user_id, fileurl, query_text, time } = data; // Assuming these keys are in the request body
+    var { user_id, fileurl, query_text, time } = data; // Assuming these keys are in the request body
 
+    const parseFileURL = (url) => {
+      if (!url) return null; // If the URL is null, return null (or handle the error as needed
+      url = url.s3_uri;
+      // Use a regular expression to match the entire URL (including "https://")
+      const regex = /(https:\/\/[^/]+\/[^/]+)/;
+      const match = url.match(regex);
+    
+      if (match && match[0]) {
+        // If a match is found and the first capturing group exists
+        return match[0]; // Return the full URL
+      } else {
+        // If no match is found or the capturing group is empty
+        return null; // Return null or handle the error as needed
+      }
+    };
+
+    fileurl = parseFileURL(fileurl);
     const insertQuery = {
       text: "INSERT INTO your_table_name (user_id, fileurl, query_text, time) VALUES ($1, $2, $3, $4)",
       values: [user_id, fileurl, query_text, time],
