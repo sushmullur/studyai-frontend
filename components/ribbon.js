@@ -24,7 +24,7 @@ export default function Ribbon() {
         </svg>
         <p className="text-zinc-800  font-medium text-6xl ">learn stream</p>
       </div>
-      <Link href="/api/auth/logout">
+      <Link href="https://studyai-frontend-mjtb.vercel.app/api/auth/logout">
         <button className="font-bold bg-zinc-400 outline outline-zinc-500 text-zinc-800 text-2xl rounded-2xl w-45 h-12 px-6 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transform hover:scale-105 transition-transform">
           Log Out
         </button>

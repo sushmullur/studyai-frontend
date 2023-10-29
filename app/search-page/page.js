@@ -14,7 +14,7 @@ export default function SearchPage() {
   useEffect(() => {
     async function fetchDataFromApi() {
       try {
-        const response = await fetch('/api/db');
+        const response = await fetch(`${process.env.DOMAIN}/api/db`);
         if (!response.ok) {
           throw new Error('Network response was not ok.');
         }
@@ -70,7 +70,7 @@ export default function SearchPage() {
           time: new Date().toISOString(),
           fileurl: uri
         }
-        fetch('/api/db', {
+        fetch(`${process.env.DOMAIN}/api/db`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

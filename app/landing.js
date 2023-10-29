@@ -9,7 +9,7 @@ export default function Landing() {
 
   // If the user is authenticated, redirect to the search-page
   if (user) {
-    router.push('/search-page');
+    router.push(`${process.env.DOMAIN}/search-page`);
   }
 
   return (
@@ -40,7 +40,7 @@ export default function Landing() {
           </p>
         </div>
         <div className="flex-shrink-0">
-            <Link href="/api/auth/login">
+            <Link href="https://studyai-frontend-mjtb.vercel.app/api/auth/login">
                 <button className="font-bold  bg-gradient-to-r from-gray-800 to-gray-700 text-white text-3xl rounded-full w-60 h-16 px-6 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transform hover:scale-105 transition-transform">
                 Get Started
                 </button>
