@@ -40,7 +40,6 @@ export default function SearchPage() {
   }
   
   const handleSearch = async (e) => {
-    console.log(search)
     setIsLoading(true)
     e.preventDefault();
 
@@ -51,10 +50,25 @@ export default function SearchPage() {
         setIsLoading(false)
         return;
     }
+
+
     fetch(`https://xrhdplg9s0.execute-api.us-west-2.amazonaws.com/Prod/search?q=${search}`, {
         method: 'POST'
     }).then((response) => {
       if (response.ok) {
+        const userData = {
+          user_id: user.email,
+          query_text: search,
+          time: new Date().toISOString(),
+          fileurl: response.s3_uri
+      }
+        fetch('/api/db', {
+          method: 'POST', 
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(userData),
+        })
         return response.json();
       } else {
         throw new Error("Invalid search Query");
