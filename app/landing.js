@@ -13,7 +13,7 @@ export default function Landing() {
   }
 
   return (
-    <main className="h-screen bg-neutral-50 text-zinc-800">
+    <main className="h-screen bg-neutral-50 text-zinc-800 flex items-center justify-center bg-cover bg-center">
       <div className="flex items-center h-full max-w-screen-xl mx-auto px-8">
         <div className="flex-grow space-y-5">
           <div className="flex items-center">
