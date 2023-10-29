@@ -73,11 +73,11 @@ export default function SearchPage() {
                 <div className="flex justify-center mt-10 space-x-2">
                     <input
                         type="text"
-                        className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-white dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        className="border border-gray-600 text-gray-900 text-sm rounded-lg block w-1/2 p-2.5 dark:bg-white dark:border-gray-600 dark:placeholder-gray-400 dark:text-black "
                         onChange={(e) => setSearch(e.target.value)}
                     />
                     <button 
-                        className="text-black bg-slate-200 hover:bg-slate-200 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-zinc-500 dark:hover:bg-zinc-300 dark:focus:ring-blue-800"
+                        className="text-black bg-zinc-500 hover:bg-zinc-300 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-zinc-500 dark:hover:bg-zinc-300"
                         onClick={handleSearch}
                     >Search</button>
                     </div>
