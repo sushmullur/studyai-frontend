@@ -19,10 +19,7 @@ export default function SQLTable(props) {
                     <tr key={row.user_id}>
                     <td className="text-black border border-black p-2">{row.query_text}</td>
                     <td className="text-cyan-500 underline-offset-1 underline border border-black p-2"><a href={row.fileurl}>{row.fileurl}</a></td>
-
-                    <div className="border border-black p-2">
-                      <ExportNotion data={row}/>
-                    </div>
+                      <ExportNotion className="border border-black p-2" data={row}/>
                     </tr>
                 ))}
                 </tbody>

@@ -6,19 +6,12 @@ import ExportNotion from "@/components/exportNotion";
 import SQLTable from "@/components/table";
 
 export default function SearchPage() {
+
   const [search, setSearch] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState();
   const [dbdata, setDbdata] = useState();
 
-  const { user } = useUser();
-  if (!user) { 
-    return (
-      <>
-        <p>Unauthorized</p>
-      </>
-    )
-  }
   useEffect(() => {
     // Fetch data and update dbdata
     async function fetchDataFromApi() {
@@ -36,6 +29,15 @@ export default function SearchPage() {
     }
     fetchDataFromApi();
   }, [data]);
+
+  const { user } = useUser();
+  if (!user) { 
+    return (
+      <>
+        <p>Unauthorized</p>
+      </>
+    )
+  }
   
   const handleSearch = async (e) => {
     console.log(search)
@@ -69,7 +71,7 @@ export default function SearchPage() {
         <Ribbon />
         <div className="flex flex-col mt-5 items-center space-y-5">
             <div className="flex flex-col bg-zinc-400 rounded-lg w-70vw h-48 p-8 space-y-5 shadow-lg">
-                <p className="justify-self-center self-center text-black  text-xl">Search your study topic!</p>
+                <p className="justify-self-center self-center text-black  text-xl">Search your study topic, {user.name}!</p>
                 <div className="flex justify-center mt-10 space-x-2">
                     <input
                         type="text"
