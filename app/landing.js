@@ -9,7 +9,7 @@ export default function Landing() {
 
   // If the user is authenticated, redirect to the search-page
   if (user) {
-    router.push(`${process.env.DOMAIN}/search-page`);
+    router.push(`/search-page`);
   }
 
   return (

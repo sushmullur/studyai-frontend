@@ -70,7 +70,7 @@ export default function SearchPage() {
           time: new Date().toISOString(),
           fileurl: uri
         }
-        fetch(`${process.env.DOMAIN}/api/db`, {
+        fetch(`/api/db`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
